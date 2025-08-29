@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dios es la Fuente de Toda Verdad</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        
+        .header h1 {
+            color: #fff;
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: fadeInDown 1s ease-out;
+        }
+        
+        .header .subtitle {
+            color: #f0f8ff;
+            font-size: 1.2rem;
+            font-weight: 300;
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+        
+        .floating-elements {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+        
+        .floating-star {
+            position: absolute;
+            color: #fff;
+            animation: float 6s ease-in-out infinite;
+            opacity: 0.7;
+        }
+        
+        .floating-star:nth-child(1) { top: 10%; left: 10%; animation-delay: 0s; }
+        .floating-star:nth-child(2) { top: 20%; right: 15%; animation-delay: 2s; }
+        .floating-star:nth-child(3) { top: 60%; left: 5%; animation-delay: 4s; }
+        .floating-star:nth-child(4) { top: 70%; right: 10%; animation-delay: 1s; }
+        
+        .main-content {
+            display: grid;
+            gap: 30px;
+        }
+        
+        .intro-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+            transform: translateY(20px);
+            animation: slideUp 0.8s ease-out forwards;
+        }
+        
+        .intro-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #ffd89b 0%, #19547b 100%);
+            border-radius: 50%;
+            opacity: 0.1;
+            z-index: 0;
+        }
+        
+        .intro-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .intro-content h2 {
+            color: #2c3e50;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .intro-content p {
+            color: #34495e;
+            line-height: 1.6;
+            font-size: 1.1rem;
+        }
+        
+        .principles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .principle-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transform: translateY(20px);
+            animation: slideUp 0.8s ease-out forwards;
+        }
+        
+        .principle-card:nth-child(2) { animation-delay: 0.2s; }
+        .principle-card:nth-child(3) { animation-delay: 0.4s; }
+        
+        .principle-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        
+        .principle-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #ff6b6b, #4ecdc4, #45b7d1);
+        }
+        
+        .principle-number {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+        
+        .principle-card h3 {
+            color: #2c3e50;
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        .principle-card p {
+            color: #34495e;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        .image-placeholder {
+            width: 100%;
+            height: 150px;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1rem;
+            text-align: center;
+            margin: 15px 0;
+            border: 3px dashed rgba(255,255,255,0.5);
+            transition: all 0.3s ease;
+        }
+        
+        .image-placeholder:hover {
+            transform: scale(1.02);
+        }
+        
+        .evaluation-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            margin-top: 30px;
+            position: relative;
+            overflow: hidden;
+            animation: fadeIn 1s ease-out 0.6s both;
+        }
+        
+        .evaluation-section::before {
+            content: '🔍';
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            font-size: 8rem;
+            opacity: 0.1;
+            z-index: 0;
+        }
+        
+        .evaluation-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .evaluation-section h2 {
+            color: #2c3e50;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .questions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 25px;
+        }
+        
+        .question-card {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .question-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            transition: all 0.5s ease;
+            opacity: 0;
+        }
+        
+        .question-card:hover::before {
+            opacity: 1;
+        }
+        
+        .question-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        
+        .question-card h4 {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        .question-card p {
+            font-size: 0.9rem;
+            line-height: 1.5;
+            opacity: 0.9;
+        }
+        
+        .interactive-elements {
+            margin-top: 30px;
+            text-align: center;
+        }
+        
+        .btn-interactive {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(238, 90, 36, 0.3);
+            margin: 10px;
+        }
+        
+        .btn-interactive:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(238, 90, 36, 0.4);
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: #fff;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        .sticker {
+            position: absolute;
+            font-size: 2rem;
+            animation: bounce 2s ease-in-out infinite;
+        }
+        
+        .sticker:nth-child(1) { top: 10%; right: 10%; animation-delay: 0s; }
+        .sticker:nth-child(2) { bottom: 20%; left: 15%; animation-delay: 1s; }
+        .sticker:nth-child(3) { top: 50%; right: 5%; animation-delay: 2s; }
+        
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 { font-size: 2.2rem; }
+            .header .subtitle { font-size: 1rem; }
+            .principles-grid { grid-template-columns: 1fr; }
+            .questions-grid { grid-template-columns: 1fr; }
+            .container { padding: 15px; }
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            backdrop-filter: blur(5px);
+        }
+        
+        .modal-content {
+            background-color: #fff;
+            margin: 10% auto;
+            padding: 30px;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 600px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+            animation: modalSlideIn 0.3s ease-out;
+        }
+        
+        @keyframes modalSlideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        
+        .close:hover { color: #000; }
+        
+        .verse-highlight {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            border-left: 4px solid #ff6b6b;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            font-style: italic;
+            position: relative;
+        }
+        
+        .verse-highlight::before {
+            content: '"';
+            font-size: 3rem;
+            color: #ff6b6b;
+            position: absolute;
+            top: 10px;
+            left: 15px;
+            opacity: 0.3;
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-elements">
+        <div class="floating-star">⭐</div>
+        <div class="floating-star">✨</div>
+        <div class="floating-star">🌟</div>
+        <div class="floating-star">💫</div>
+    </div>
+    
+    <div class="sticker">📖</div>
+    <div class="sticker">🙏</div>
+    <div class="sticker">💛</div>
+    
+    <div class="container">
+        <header class="header">
+            <h1>🌟 Dios es la Fuente de Toda Verdad 🌟</h1>
+            <p class="subtitle">Microcapacitación 3: Adquirir Conocimiento Espiritual</p>
+        </header>
+        
+        <main class="main-content">
+            <section class="intro-section">
+                <div class="intro-content">
+                    <h2>🔍 ¿Qué es el Conocimiento Espiritual?</h2>
+                    <div class="image-placeholder">
+                        📷 Espacio para tu imagen: "Dios es la fuente de toda verdad"
+                    </div>
+                    <p>
+                        Dios sabe todas las cosas y es la fuente de toda verdad. Nos ha instado a 
+                        <strong>"buscar conocimiento, tanto por el estudio como por la fe"</strong> 
+                        (D. y C. 88:118). En nuestra búsqueda de la verdad, podemos confiar en Él 
+                        completamente, dependiendo de Su sabiduría y amor.
+                    </p>
+                    <div class="verse-highlight">
+                        "Mirad hacia mí en todo pensamiento; no dudéis; no temáis" 
+                        <br><em>- Doctrina y Convenios 6:36</em>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="principles-grid">
+                <div class="principle-card" onclick="openModal('modal1')">
+                    <div class="principle-number">1</div>
+                    <h3>🤲 Actuar con Fe</h3>
+                    <div class="image-placeholder">
+                        📷 Espacio para imagen: "Oración y estudio"
+                    </div>
+                    <p>
+                        Actuamos con fe cuando decidimos confiar en Dios y acudir a Él 
+                        primeramente a través de la oración sincera, el estudio de Sus 
+                        enseñanzas y la obediencia a Sus mandamientos.
+                    </p>
+                </div>
+                
+                <div class="principle-card" onclick="openModal('modal2')">
+                    <div class="principle-number">2</div>
+                    <h3>🌅 Perspectiva Eterna</h3>
+                    <div class="image-placeholder">
+                        📷 Espacio para imagen: "Plan de Salvación"
+                    </div>
+                    <p>
+                        Analizamos conceptos y preguntas considerándolos en el contexto 
+                        del Plan de Salvación y las enseñanzas del Salvador, buscando 
+                        ver las cosas como el Señor las ve.
+                    </p>
+                </div>
+                
+                <div class="principle-card" onclick="openModal('modal3')">
+                    <div class="principle-number">3</div>
+                    <h3>📚 Fuentes Divinamente Señaladas</h3>
+                    <div class="image-placeholder">
+                        📷 Espacio para imagen: "Escrituras y profetas"
+                    </div>
+                    <p>
+                        Procuramos mayor comprensión mediante las fuentes que el Señor 
+                        ha establecido: el Espíritu Santo, las Escrituras, los profetas 
+                        y líderes de la Iglesia.
+                    </p>
+                </div>
+            </section>
+            
+            <section class="evaluation-section">
+                <div class="evaluation-content">
+                    <h2>🔍 Cómo Evaluar la Fiabilidad de las Fuentes</h2>
+                    <div class="image-placeholder">
+                        📷 Espacio para imagen: "Evaluando información"
+                    </div>
+                    <div class="verse-highlight">
+                        "Debemos ser prudentes al buscar la verdad y elegir fuentes para realizar esa búsqueda"
+                        <br><em>- Presidente Dallin H. Oaks</em>
+                    </div>
+                    
+                    <div class="questions-grid">
+                        <div class="question-card" onclick="highlightCard(this)">
+                            <h4>🎯 Intenciones del Autor</h4>
+                            <p>¿Cuáles son los títulos, intenciones y posibles predisposiciones del autor?</p>
+                        </div>
+                        
+                        <div class="question-card" onclick="highlightCard(this)">
+                            <h4>📍 Proximidad a los Eventos</h4>
+                            <p>¿Qué tan cerca está el autor de los acontecimientos que describe?</p>
+                        </div>
+                        
+                        <div class="question-card" onclick="highlightCard(this)">
+                            <h4>🕵️ Evidencias Omitidas</h4>
+                            <p>¿Ignora el autor intencionalmente evidencias para inducir a error?</p>
+                        </div>
+                        
+                        <div class="question-card" onclick="highlightCard(this)">
+                            <h4>⏰ Contexto Histórico</h4>
+                            <p>¿Se presentan en el contexto apropiado de tiempo, lugar y circunstancias?</p>
+                        </div>
+                        
+                        <div class="question-card" onclick="highlightCard(this)">
+                            <h4>✅ Fuentes Adicionales</h4>
+                            <p>¿Se respaldan con otras fuentes confiables adicionales?</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <div class="interactive-elements">
+                <button class="btn-interactive" onclick="showQuote()">💬 Mostrar Cita Inspiradora</button>
+                <button class="btn-interactive" onclick="resetCards()">🔄 Reiniciar Tarjetas</button>
+                <button class="btn-interactive" onclick="shareContent()">📱 Compartir</button>
+            </div>
+        </main>
+        
+        <footer class="footer">
+            <p>✨ "Por el poder del Espíritu Santo podréis conocer la verdad de todas las cosas" - Moroni 10:5 ✨</p>
+            <p>Seminario - Dominio de la Doctrina 2023</p>
+        </footer>
+    </div>
+    
+    <!-- Modales -->
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal1')">&times;</span>
+            <h2>🤲 Principio 1: Actuar con Fe</h2>
+            <p><strong>¿Cómo actuar con fe?</strong></p>
+            <ul>
+                <li>🙏 Confiar en Dios y acudir a Él en oración sincera</li>
+                <li>📖 Estudiar Sus enseñanzas diligentemente</li>
+                <li>💙 Obedecer Sus mandamientos</li>
+                <li>💪 Aferrarse al testimonio que ya tenemos</li>
+            </ul>
+            <div class="verse-highlight">
+                "Cuando lleguen esos momentos... aférrense al conocimiento que ya tienen y manténganse firmes hasta que reciban más conocimiento" - Élder Jeffrey R. Holland
+            </div>
+        </div>
+    </div>
+    
+    <div id="modal2" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal2')">&times;</span>
+            <h2>🌅 Principio 2: Perspectiva Eterna</h2>
+            <p><strong>¿Cómo desarrollar una perspectiva eterna?</strong></p>
+            <ul>
+                <li>🌟 Considerar el contexto del Plan de Salvación</li>
+                <li>💭 Ver las cosas como el Señor las ve</li>
+                <li>❓ Reformular nuestras preguntas</li>
+                <li>⏳ Analizar eventos históricos en su contexto apropiado</li>
+            </ul>
+            <div class="verse-highlight">
+                "Los detalles históricos no poseen el poder salvador de las ordenanzas, los convenios y la doctrina"
+            </div>
+        </div>
+    </div>
+    
+    <div id="modal3" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal3')">&times;</span>
+            <h2>📚 Principio 3: Fuentes Divinamente Señaladas</h2>
+            <p><strong>¿Cuáles son las fuentes confiables?</strong></p>
+            <ul>
+                <li>✨ La luz de Cristo</li>
+                <li>👻 El Espíritu Santo</li>
+                <li>📜 Las Escrituras</li>
+                <li>👨‍👩‍👧‍👦 Los padres</li>
+                <li>👥 Los líderes de la Iglesia</li>
+                <li>📯 Los profetas y apóstoles</li>
+            </ul>
+            <div class="verse-highlight">
+                "Por el poder del Espíritu Santo podréis conocer la verdad de todas las cosas" - Moroni 10:5
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = 'block';
+        }
+        
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+        
+        function highlightCard(card) {
+            // Remover highlight de todas las tarjetas
+            document.querySelectorAll('.question-card').forEach(c => {
+                c.style.transform = '';
+                c.style.boxShadow = '';
+            });
+            
+            // Destacar la tarjeta seleccionada
+            card.style.transform = 'scale(1.05)';
+            card.style.boxShadow = '0 15px 35px rgba(255,107,107,0.3)';
+        }
+        
+        function resetCards() {
+            document.querySelectorAll('.question-card').forEach(card => {
+                card.style.transform = '';
+                card.style.boxShadow = '';
+            });
+        }
+        
+        const inspiringQuotes = [
+            "\"Buscar conocimiento, tanto por el estudio como por la fe\" - D. y C. 88:118",
+            "\"Mirad hacia mí en todo pensamiento; no dudéis; no temáis\" - D. y C. 6:36",
+            "\"Por el poder del Espíritu Santo podréis conocer la verdad de todas las cosas\" - Moroni 10:5",
+            "\"Línea por línea, precepto por precepto\" - 2 Nefi 28:30"
+        ];
+        
+        function showQuote() {
+            const randomQuote = inspiringQuotes[Math.floor(Math.random() * inspiringQuotes.length)];
+            alert('💫 ' + randomQuote);
+        }
+        
+        function shareContent() {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Dios es la Fuente de Toda Verdad',
+                    text: 'Aprende sobre cómo adquirir conocimiento espiritual y evaluar fuentes confiables',
+                    url: window.location.href
+                });
+            } else {
+                alert('📱 ¡Comparte este contenido con tus amigos y familiares!');
+            }
+        }
+        
+        // Cerrar modales al hacer clic fuera de ellos
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.style.display = 'none';
+            }
+        }
+        
+        // Añadir interactividad adicional
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animar elementos al hacer scroll
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+            
+            document.querySelectorAll('.principle-card, .question-card').forEach(card => {
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+</html>
