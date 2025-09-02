@@ -7,7 +7,7 @@ Welcome to our interactive and inspiring infographic that explores the principle
 The content is based on the idea that God is the source of all truth, and we can access that truth by seeking knowledge through both study and faith (D. y C. 88:118). This infographic serves as a guide to help you navigate your spiritual journey.
 
 ## Infographic Preview
-![Infographic Preview](link-to-your-image.jpg)  
+![Infographic Preview](https://github.com/desivar/infografia/blob/main/images/Screenshot%202025-09-02%20054026.png)  
 *Here's a quick look at the infographic's design.*
 
 ## Demonstration Video
