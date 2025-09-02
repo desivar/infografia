@@ -26,11 +26,11 @@ body {
 }
 
 .header h1 {
-    color: #724CF9; 
+    color: #3980E9; 
     font-size: 2.8rem;
     font-weight: 700;
     margin-bottom: 10px;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+    text-shadow: 2px 2px 4px rgba(72, 202, 228);
     animation: fadeInDown 1s ease-out;
 }
 
