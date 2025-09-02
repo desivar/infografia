@@ -10,9 +10,9 @@ The content is based on the idea that God is the source of all truth, and we can
 ![Infographic Preview](https://github.com/desivar/infografia/blob/main/images/Screenshot%202025-09-02%20054026.png)  
 *Here's a quick look at the infographic's design.*
 
-## Demonstration Video
-Watch our short video that demonstrates the interactive features of the infographic, including clickable cards, a quote generator, and card highlighting.  
-[Watch the Demo Video](link-to-your-video.mp4)
+## Link to the Project
+that demonstrates the interactive features of the infographic, including clickable cards, a quote generator, and card highlighting.  
+[Click to see the HTML](https://desivar.github.io/infografia/visual.html)
 
 ## Key Features
 ### Three Principles
